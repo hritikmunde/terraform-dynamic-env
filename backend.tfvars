@@ -1,4 +1,5 @@
-bucket               = "my-vibrant-and-nifty-app-infra"
-key                  = "infra.json"
+bucket               = "dynamic-env-boba"
+key                  = "infra.tfstate"
 region               = "us-west-2"
 workspace_key_prefix = "environment"
+dynamodb_table       = "terraform-state-locker"

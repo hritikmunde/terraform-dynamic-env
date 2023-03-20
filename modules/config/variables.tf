@@ -81,3 +81,22 @@ variable "namespaces" {
   type        = list(string)
   description = "List of namespaces to be created in our EKS Cluster."
 }
+variable "subject" {
+ type = list(object({
+ kind = string
+ name = string
+ namespace = string
+ }))
+ default = [
+   {
+ kind = "ServiceAccount"
+ name = "example-sa-1"
+ namespace = "default"
+ },
+ {
+ kind = "ServiceAccount"
+ name = "example-sa-2"
+ namespace = "default"
+  },
+ ]
+}

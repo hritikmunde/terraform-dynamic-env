@@ -76,12 +76,17 @@ resource "kubernetes_cluster_role_binding" "iam_roles_developers" {
     kind      = "ClusterRole"
     name      = "${var.name_prefix}-developers"
   }
-
+  subject { 
+    name = "default-user" 
+    kind = "User" 
+    api_group = "rbac.authorization.k8s.io" 
+    }
   dynamic "subject" {
     for_each = toset(var.developer_users)
 
     content {
       name      = subject.key
+    #   namespace = namespaces.value["namespace"]
       kind      = "User"
       api_group = "rbac.authorization.k8s.io"
     }
